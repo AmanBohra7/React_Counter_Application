@@ -57,6 +57,17 @@ class App extends Component {
         this.setState( {counters : counters } );
     };
 
+    handleAddElement = () =>{
+        const elements = this.state.counters.length;
+        let counters = [...this.state.counters];
+        const new_counter = {
+            id : elements+1,
+            value : 0
+        }
+        counters.push(new_counter);
+        this.setState({counters});
+        console.log("Add element event called!");
+    };
  
     render() { 
         return ( 
@@ -68,6 +79,7 @@ class App extends Component {
                         onIncrement = {this.handleIncrement}
                         onDecrement = {this.handleDecrement}
                         onDelete = {this.handleDelete}
+                        onAddElement = {this.handleAddElement}
                         counters = {this.state.counters}
                      />
                 </main>
